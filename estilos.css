@@ -56,3 +56,14 @@ body{
     width: 20%;
     height: 20%;
 }
+.olvide{
+    background-color: transparent;
+    margin: 0px;
+    content: 0px;
+    color: white;
+    text-align: center;
+    border: none;
+}
+.olvide:hover{
+    color: gray;
+}
