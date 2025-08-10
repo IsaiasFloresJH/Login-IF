@@ -1,47 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SIGN IN</title>
+    <title>SIGN IN - Portal Isaías</title>
     <link rel="stylesheet" href="estilos.css">
     <link rel="icon" href="images/if logo white.png">
 </head>
 <body>
-    
+    <div class="matrix-rain"></div>
     
     <div class="contenedor">
         <div class="imagen">
-            <img id="imagensub" src="images/if logo black.png" alt="">
+            <img id="imagensub" src="images/if logo white.png" alt="Logo IF">
         </div>
         <div class="formulario">
-        <h2 class="titulo">SIGN IN</h2>
-        
-
-        <form id="forma" name="forma" method="post"> <!-- este es el metodo recomendado-->
-            <div class="elemento">
-                <label for="usuario">Usuario: </label> 
-                <input type="text" id="usuario" name="usuario" required="true" /> 
-            </div>
-            <div class="elemento">
-                <label for="password">Password: </label> 
-                <input type="password" id="password"usuario" required="true" /> 
-            </div>
-            <div class="elemento">
-                <input type="submit" value="Enviar">
-            </div>
-            <div class="olvide a">
-                <input class="olvide" type="submit" value="¿Olvidaste tu contraseña?">
-            </div>
-        </form>
+            <h2 class="titulo">SIGN IN</h2>
+            
+            <div id="mensaje" class="mensaje" style="display: none;"></div>
+            
+            <form id="forma" name="forma" onsubmit="return validarLogin(event)">
+                <div class="elemento">
+                    <label for="usuario">Usuario:</label> 
+                    <input type="text" id="usuario" name="usuario" placeholder="◉ Ingresa tu usuario" required /> 
+                </div>
+                <div class="elemento">
+                    <label for="password">Contraseña:</label> 
+                    <input type="password" id="password" name="password" placeholder="◉ Ingresa tu contraseña" required /> 
+                </div>
+                <div class="elemento">
+                    <input type="submit" value="🚀 INICIAR SESIÓN">
+                </div>
+                <div class="elemento">
+                    <button type="button" class="olvide" onclick="mostrarAyuda()">❓ ¿Olvidaste tu contraseña?</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-
-    
-
-    
-
+    <script>
+        function validarLogin(event) {
+            event.preventDefault();
+            
+            const usuario = document.getElementById('usuario').value;
+            const password = document.getElementById('password').value;
+            const mensaje = document.getElementById('mensaje');
+            const submitBtn = document.querySelector('input[type="submit"]');
+            
+            // Limpiar mensajes anteriores
+            mensaje.style.display = 'none';
+            mensaje.className = 'mensaje';
+            
+            // Efecto de carga en el botón
+            submitBtn.value = '⏳ VERIFICANDO...';
+            submitBtn.disabled = true;
+            
+            setTimeout(() => {
+                // Validar credenciales
+                if (usuario === 'isaias' && password === 'admin123') {
+                    // Login exitoso
+                    mensaje.innerHTML = '✅ ¡Acceso Autorizado! Redirigiendo al portal...';
+                    mensaje.className = 'mensaje success-message';
+                    mensaje.style.display = 'block';
+                    
+                    submitBtn.value = '🔓 ACCESO CONCEDIDO';
+                    
+                    // Efecto de éxito
+                    document.body.style.background = 'linear-gradient(45deg, #0c0c0c 0%, #004d00 25%, #00ff00 50%, #004d00 75%, #000000 100%)';
+                    
+                    // Redirección con efecto
+                    setTimeout(() => {
+                        window.location.href = 'https://isaiasfloresjh.github.io/PortafolioIsaiasFlores-IF';
+                    }, 2000);
+                    
+                } else {
+                    // Login fallido
+                    mensaje.innerHTML = '🔒 Acceso Denegado - Credenciales Incorrectas';
+                    mensaje.className = 'mensaje error-message';
+                    mensaje.style.display = 'block';
+                    
+                    // Efecto de error
+                    document.body.style.background = 'linear-gradient(45deg, #0c0c0c 0%, #4d0000 25%, #ff0000 50%, #4d0000 75%, #000000 100%)';
+                    
+                    setTimeout(() => {
+                        document.body.style.background = 'linear-gradient(45deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f0f23 75%, #000000 100%)';
+                    }, 1500);
+                    
+                    // Resetear campos
+                    document.getElementById('password').value = '';
+                    submitBtn.value = '🚀 INICIAR SESIÓN';
+                    submitBtn.disabled = false;
+                    document.getElementById('usuario').focus();
+                }
+            }, 1500);
+            
+            return false;
+        }
+        
+        function mostrarAyuda() {
+            const mensaje = document.getElementById('mensaje');
+            mensaje.innerHTML = '🛡️ Sistema de Seguridad Activo - Contacta al administrador para recuperar acceso';
+            mensaje.className = 'mensaje success-message';
+            mensaje.style.display = 'block';
+            
+            setTimeout(() => {
+                mensaje.style.display = 'none';
+            }, 4000);
+        }
+        
+        // Efecto de typing cyberpunk en el título
+        document.addEventListener('DOMContentLoaded', function() {
+            const titulo = document.querySelector('.titulo');
+            const texto = titulo.textContent;
+            titulo.textContent = '';
+            
+            let i = 0;
+            const typing = setInterval(() => {
+                if (i < texto.length) {
+                    titulo.textContent += texto[i];
+                    i++;
+                } else {
+                    clearInterval(typing);
+                    // Efecto de parpadeo final
+                    titulo.style.animation = 'titleGlow 2s ease-in-out infinite alternate';
+                }
+            }, 200);
+        });
+        
+        // Auto-focus con efecto
+        window.onload = function() {
+            setTimeout(() => {
+                document.getElementById('usuario').focus();
+            }, 500);
+        };
+        
+        // Efectos de sonido simulados con vibraciones visuales
+        function addGlitchEffect() {
+            const elementos = document.querySelectorAll('.elemento input');
+            elementos.forEach(el => {
+                el.addEventListener('focus', function() {
+                    this.style.animation = 'inputGlow 0.5s ease-out';
+                });
+            });
+        }
+        
+        // Inicializar efectos
+        document.addEventListener('DOMContentLoaded', addGlitchEffect);
+        
+        // Efecto de partículas en hover
+        document.querySelector('.contenedor').addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.02)';
+        });
+        
+        document.querySelector('.contenedor').addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
 </body>
 </html>

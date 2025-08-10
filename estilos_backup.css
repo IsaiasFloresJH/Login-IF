@@ -1,0 +1,710 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg, #0a0a23 0%, #1a1a4e 15%, #2a2a8e 30%, #1a4e8e 45%, #0e4d6b 60%, #2a8e5a 75%, #1a8e2a 90%, #0a4a0a 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 10s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animación del fondo más suave */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Partículas flotantes espectaculares */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(2px 2px at 20px 30px, #00ff88, transparent),
+        radial-gradient(2px 2px at 40px 70px, #ff0080, transparent),
+        radial-gradient(1px 1px at 90px 40px, #0080ff, transparent),
+        radial-gradient(1px 1px at 130px 80px, #ffaa00, transparent),
+        radial-gradient(2px 2px at 160px 30px, #aa00ff, transparent),
+        radial-gradient(1px 1px at 200px 60px, #ff4040, transparent),
+        radial-gradient(2px 2px at 250px 20px, #40ff40, transparent);
+    background-repeat: repeat;
+    background-size: 300px 150px;
+    animation: particles 25s linear infinite;
+    opacity: 0.7;
+}
+
+/* Efectos de circuito en el fondo */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(90deg, transparent 24%, rgba(0, 255, 136, 0.05) 25%, rgba(0, 255, 136, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 255, 136, 0.05) 75%, rgba(0, 255, 136, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(0deg, transparent 24%, rgba(0, 128, 255, 0.05) 25%, rgba(0, 128, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 128, 255, 0.05) 75%, rgba(0, 128, 255, 0.05) 76%, transparent 77%, transparent);
+    background-size: 60px 60px;
+    animation: circuit 40s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes particles {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes circuit {
+    0% { background-position: 0 0, 0 0; }
+    100% { background-position: 60px 60px, -60px -60px; }
+}
+
+.contenedor {
+    width: 420px;
+    padding: 40px;
+    background: rgba(15, 15, 25, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10;
+    animation: slideIn 0.8s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+#imagensub {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: contain;
+    filter: brightness(1.1) contrast(1.1);
+    transition: all 0.3s ease;
+}
+
+#imagensub:hover {
+    transform: scale(1.1);
+    filter: brightness(1.3) contrast(1.2);
+}
+
+.formulario h2 {
+    text-align: center;
+    color: #ffffff;
+    font-family: 'Orbitron', monospace;
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.3);
+    letter-spacing: 3px;
+}
+
+.elemento {
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.elemento label {
+    display: block;
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.elemento input[type="text"],
+.elemento input[type="password"] {
+    width: 100%;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Rajdhani', sans-serif;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.elemento input[type="text"]:focus,
+.elemento input[type="password"]:focus {
+    outline: none;
+    border-color: #00aaff;
+    background: rgba(0, 170, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 170, 255, 0.2);
+}
+
+.elemento input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.elemento input[type="submit"] {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 102, 204, 0.3);
+}
+
+.elemento input[type="submit"]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 102, 204, 0.4);
+    background: linear-gradient(135deg, #0052a3 0%, #003d7a 100%);
+}
+
+.elemento input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+.olvide {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: 'Rajdhani', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+    text-decoration: none;
+}
+
+.olvide:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    transform: translateY(-2px);
+} 
+        box-shadow: 
+            0 0 50px rgba(0, 255, 136, 0.2),
+            0 0 100px rgba(0, 128, 255, 0.1),
+            inset 0 0 50px rgba(255, 255, 255, 0.05);
+    }
+    50% { 
+        box-shadow: 
+            0 0 80px rgba(0, 255, 136, 0.4),
+            0 0 150px rgba(0, 128, 255, 0.2),
+            inset 0 0 80px rgba(255, 255, 255, 0.1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(50px) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.imagen {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 35px;
+    position: relative;
+}
+
+.imagen::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(circle, rgba(0, 255, 136, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: logoGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoGlow {
+    0% { 
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.3;
+    }
+    100% { 
+        transform: translate(-50%, -50%) scale(1.2);
+        opacity: 0.6;
+    }
+}
+
+#imagensub {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: contain;
+    filter: 
+        drop-shadow(0 0 20px rgba(0, 255, 136, 0.5))
+        drop-shadow(0 0 40px rgba(0, 128, 255, 0.3))
+        brightness(1.2)
+        contrast(1.1);
+    animation: logoRotate 8s linear infinite, logoPulse 3s ease-in-out infinite;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes logoRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes logoPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.formulario h2 {
+    text-align: center;
+    color: #00ff88;
+    font-family: 'Orbitron', monospace;
+    font-size: 36px;
+    font-weight: 900;
+    margin-bottom: 45px;
+    text-shadow: 
+        0 0 10px rgba(0, 255, 136, 0.8),
+        0 0 20px rgba(0, 255, 136, 0.6),
+        0 0 30px rgba(0, 255, 136, 0.4);
+    letter-spacing: 4px;
+    position: relative;
+    animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes titleGlow {
+    0% { 
+        text-shadow: 
+            0 0 10px rgba(0, 255, 136, 0.8),
+            0 0 20px rgba(0, 255, 136, 0.6),
+            0 0 30px rgba(0, 255, 136, 0.4);
+    }
+    100% { 
+        text-shadow: 
+            0 0 20px rgba(0, 255, 136, 1),
+            0 0 30px rgba(0, 255, 136, 0.8),
+            0 0 40px rgba(0, 255, 136, 0.6);
+    }
+}
+
+.formulario h2::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    transform: translateX(-50%);
+    animation: lineMove 3s ease-in-out infinite;
+}
+
+@keyframes lineMove {
+    0%, 100% { width: 100px; opacity: 0.5; }
+    50% { width: 200px; opacity: 1; }
+}
+
+.elemento {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.elemento label {
+    display: block;
+    color: #00ff88;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    animation: labelPulse 3s ease-in-out infinite;
+}
+
+@keyframes labelPulse {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 1; }
+}
+
+.elemento input[type="text"],
+.elemento input[type="password"] {
+    width: 100%;
+    padding: 18px 25px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(26, 26, 46, 0.7) 100%);
+    border: 2px solid rgba(0, 255, 136, 0.3);
+    border-radius: 15px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Rajdhani', sans-serif;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.elemento input[type="text"]::before,
+.elemento input[type="password"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.elemento input[type="text"]:focus,
+.elemento input[type="password"]:focus {
+    outline: none;
+    border-color: #00ff88;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 128, 255, 0.1) 100%);
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 35px rgba(0, 0, 0, 0.3),
+        0 0 25px rgba(0, 255, 136, 0.4),
+        inset 0 0 25px rgba(0, 255, 136, 0.1);
+    animation: inputGlow 0.5s ease-out;
+}
+
+@keyframes inputGlow {
+    0% { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3); }
+    100% { 
+        box-shadow: 
+            0 15px 35px rgba(0, 0, 0, 0.3),
+            0 0 25px rgba(0, 255, 136, 0.4),
+            inset 0 0 25px rgba(0, 255, 136, 0.1);
+    }
+}
+
+.elemento input::placeholder {
+    color: rgba(0, 255, 136, 0.6);
+    font-style: italic;
+}
+
+.elemento input[type="submit"] {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #ff0080 0%, #ff4060 50%, #ff6040 100%);
+    border: none;
+    border-radius: 15px;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Orbitron', monospace;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        0 10px 30px rgba(255, 0, 128, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.elemento input[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+.elemento input[type="submit"]:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 20px 50px rgba(255, 0, 128, 0.5),
+        0 0 50px rgba(255, 64, 96, 0.3),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+    background: linear-gradient(135deg, #ff4060 0%, #ff6040 50%, #ff8020 100%);
+    animation: buttonPulse 0.6s ease-out;
+}
+
+.elemento input[type="submit"]:hover::before {
+    left: 100%;
+}
+
+@keyframes buttonPulse {
+    0% { transform: translateY(-5px) scale(1); }
+    50% { transform: translateY(-5px) scale(1.02); }
+    100% { transform: translateY(-5px) scale(1); }
+}
+
+.elemento input[type="submit"]:active {
+    transform: translateY(-2px) scale(0.98);
+}
+
+.olvide {
+    display: block;
+    width: 100%;
+    background: linear-gradient(135deg, rgba(0, 128, 255, 0.1) 0%, rgba(170, 0, 255, 0.1) 100%);
+    border: 2px solid rgba(0, 128, 255, 0.4);
+    border-radius: 15px;
+    color: #0080ff;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Rajdhani', sans-serif;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+}
+
+.olvide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 128, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.olvide:hover {
+    background: linear-gradient(135deg, rgba(0, 128, 255, 0.2) 0%, rgba(170, 0, 255, 0.2) 100%);
+    border-color: #0080ff;
+    color: #00aaff;
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 35px rgba(0, 128, 255, 0.2),
+        0 0 25px rgba(0, 128, 255, 0.3);
+    text-shadow: 0 0 10px rgba(0, 128, 255, 0.5);
+}
+
+.olvide:hover::before {
+    left: 100%;
+}
+
+.error-message {
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.2) 0%, rgba(255, 64, 64, 0.2) 100%);
+    border: 2px solid rgba(255, 0, 128, 0.6);
+    border-radius: 15px;
+    color: #ff4080;
+    padding: 18px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    backdrop-filter: blur(15px);
+    animation: errorShake 0.6s ease-in-out, errorGlow 2s ease-in-out infinite alternate;
+    box-shadow: 
+        0 10px 30px rgba(255, 0, 128, 0.3),
+        inset 0 0 25px rgba(255, 0, 128, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.error-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: errorSweep 1.5s ease-in-out infinite;
+}
+
+@keyframes errorShake {
+    0%, 100% { transform: translateX(0); }
+    10%, 30%, 50%, 70%, 90% { transform: translateX(-8px); }
+    20%, 40%, 60%, 80% { transform: translateX(8px); }
+}
+
+@keyframes errorGlow {
+    0% { 
+        box-shadow: 
+            0 10px 30px rgba(255, 0, 128, 0.3),
+            inset 0 0 25px rgba(255, 0, 128, 0.1);
+    }
+    100% { 
+        box-shadow: 
+            0 15px 40px rgba(255, 0, 128, 0.5),
+            inset 0 0 35px rgba(255, 0, 128, 0.2);
+    }
+}
+
+@keyframes errorSweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.success-message {
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 200, 255, 0.2) 100%);
+    border: 2px solid rgba(0, 255, 136, 0.6);
+    border-radius: 15px;
+    color: #00ff88;
+    padding: 18px;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    backdrop-filter: blur(15px);
+    animation: successPulse 1s ease-in-out infinite alternate;
+    box-shadow: 
+        0 10px 30px rgba(0, 255, 136, 0.3),
+        inset 0 0 25px rgba(0, 255, 136, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.success-message::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: successSweep 1.5s ease-in-out infinite;
+}
+
+@keyframes successPulse {
+    0% { 
+        box-shadow: 
+            0 10px 30px rgba(0, 255, 136, 0.3),
+            inset 0 0 25px rgba(0, 255, 136, 0.1);
+    }
+    100% { 
+        box-shadow: 
+            0 15px 40px rgba(0, 255, 136, 0.5),
+            inset 0 0 35px rgba(0, 255, 136, 0.2);
+    }
+}
+
+@keyframes successSweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Efectos de resplandor adicionales */
+.contenedor:hover {
+    animation: containerHover 0.5s ease-out;
+}
+
+@keyframes containerHover {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Efecto matrix rain */
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    background: 
+        linear-gradient(0deg, transparent 98%, rgba(0, 255, 136, 0.1) 100%);
+    background-size: 20px 100px;
+    animation: matrixRain 10s linear infinite;
+}
+
+@keyframes matrixRain {
+    0% { background-position: 0 -100px; }
+    100% { background-position: 0 100vh; }
+}
+
+/* Responsive mejorado */
+@media (max-width: 480px) {
+    .contenedor {
+        width: 95%;
+        margin: 10px;
+        padding: 35px 25px;
+    }
+    
+    .formulario h2 {
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+    
+    #imagensub {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .elemento input[type="text"],
+    .elemento input[type="password"] {
+        padding: 15px 20px;
+        font-size: 15px;
+    }
+    
+    .elemento input[type="submit"] {
+        padding: 18px;
+        font-size: 16px;
+        letter-spacing: 2px;
+    }
+}
